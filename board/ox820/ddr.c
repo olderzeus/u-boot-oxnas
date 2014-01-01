@@ -58,22 +58,22 @@ typedef struct {
 
 //cmd_mode_wr_cl_bl
 //when SDR : cmd_mode_wr_cl_bl = 0x80200002 + (latency_CAS_RAM * 16) + (recovery_WR - 1) * 512; -- Sets write rec XX, CL=XX; BL=8
-//else       cmd_mode_wr_cl_bl = 0x80200003 + (latency_CAS_RAM * 16) + (recovery_WR - 1) * 512; -- Sets write rec XX, CL=XX; BL=8        
-                                                             
+//else       cmd_mode_wr_cl_bl = 0x80200003 + (latency_CAS_RAM * 16) + (recovery_WR - 1) * 512; -- Sets write rec XX, CL=XX; BL=8
+
 //                                                            cmd_                    bank_ dir_     lat_  rec_ width_ odt_   odt_ fix delay     ratio
 //                                                                A                                F  C         update offset all  re  re_to_we  w  r0  r1
-//                                                                R     L        P  R        R  W  A  A  W  W  
+//                                                                R     L        P  R        R  W  A  A  W  W
 //Timing Parameters                                            A  W  N  M  R  W  C  F  R  W  W  R  W  S  L  R
-static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25E_CL5_1GB = { 4, 5, 0, 2, 4, 4, 5,51,23,24, 9,11,18, 5, 4, 6,      3,      2,  0,  1,       2, 75, 56, 56}; //elida device.
-static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25E_CL5_2GB = { 4, 5, 0, 2, 4, 4, 5,79,22,24, 9,11,20, 5, 4, 6,      3,      2,  0,  1,       2, 75, 56, 56};
-static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25_CL6_1GB = { 5, 6, 0, 2, 5, 4, 6,45,22,27,10,12,16, 6, 5, 6,      9,      2,  1,  1,       2, 75, 56, 56}; // 400MHz, Speedgrade 25 timings (1Gb parts) Samsung CL=6
+static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25E_CL5_1GB = { 4, 5, 0, 2, 4, 4, 5, 51, 23, 24, 9, 11, 18, 5, 4, 6, 3, 2, 0, 1, 2, 75, 56, 56 }; //elida device.
+static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25E_CL5_2GB = { 4, 5, 0, 2, 4, 4, 5, 79, 22, 24, 9, 11, 20, 5, 4, 6, 3, 2, 0, 1, 2, 75, 56, 56 };
+static const T_DDR_TIMING_PARAMETERS C_TP_DDR2_25_CL6_1GB = { 4, 5, 0, 2, 4, 4,	4, 51, 22, 26, 10, 12, 18, 6, 5, 6, 3, 2, 0, 1, 2, 75, 56, 56 }; // 400MHz, Speedgrade 25 timings (1Gb parts)
 
-//                                                          D     B  B  R  A   S 
+//                                                          D     B  B  R  A   S
 //                                                          D  W  L  K  A  S   P
 //Config Parameters                                         R  D  C  8  M  Z   D CMD_MODE
 //static const T_DDR_CONFIG_PARAMETERS C_CP_DDR2_25E_CL5  = { 2,16, 1, 0, 1, 32,25,0x80200A53}; // 64 MByte
-static const T_DDR_CONFIG_PARAMETERS C_CP_DDR2_25E_CL5  = { 2,16, 1, 1, 2, 128,25,0x80200A53}; // 256 MByte
-static const T_DDR_CONFIG_PARAMETERS C_CP_DDR2_25_CL6   = { 2,16, 1, 1, 1, 64,25,0x80200A63}; // 128 MByte
+static const T_DDR_CONFIG_PARAMETERS C_CP_DDR2_25E_CL5 = { 2, 16, 1, 1, 1, 64, 25, 0x80200A53 }; // 128 MByte
+static const T_DDR_CONFIG_PARAMETERS C_CP_DDR2_25_CL6 = { 2, 16, 1, 1, 1, 128,25, 0x80200A63 }; // 256 MByte
 
 static void ddr_phy_poll_until_locked(void)
 {
