@@ -229,8 +229,13 @@ void spl_block_load_image(void)
 	{
 		err = block_load_image_raw(device,
 					 CONFIG_SYS_BLOCK_RAW_MODE_U_BOOT_SECTOR);
-		if (err)
-			hang();
+		if (err) 
+		{
+			err = block_load_image_raw(device,
+						 CONFIG_SYS_BLOCK_RAW_MODE_U_BOOT_SECTOR2);
+			if (err)
+				hang();
+		}
 	}
 }
 #endif /* CONFIG_SPL_FAT_SUPPORT */
